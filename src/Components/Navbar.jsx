@@ -1,12 +1,181 @@
-import React, { Component } from 'react'
+import React from "react";
 
-export default class Navbar extends Component {
+// @material-ui/core components
+import withStyles from "@material-ui/core/styles/withStyles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+// core components
+import Header from "./Header/Header.jsx";
+import Button from "./Button.jsx";
+
+import navbarsStyle from "../assets/jss/material-kit-pro-react/views/componentsSections/navbarsStyle.jsx";
+import { NewsContext } from "../context/NewsContext.jsx";
+class Navbar extends React.Component {
+    componentDidMount = () => {
+        const { saveNews } = this.context;
+        const lang = localStorage.getItem("language");
+        let tab = localStorage.getItem("tab");
+        if (window.location.pathname === "/") {
+            tab = 1;
+        } else if (window.location.pathname === "/categories") {
+            tab = 2;
+        } else if (window.location.pathname === "/search") {
+            tab = 3;
+        }
+        saveNews({ lang, tab: parseInt(tab) });
+    };
+
+    saveTab = (num) => {
+        const { saveNews } = this.context;
+        localStorage.setItem("tab", num);
+        saveNews({ tab: num });
+        if (num === 1) {
+            this.props.history.push("/");
+        } else if (num === 2) {
+            this.props.history.push("/categories");
+        } else {
+            this.props.history.push("/search");
+        }
+    };
+    saveLang = (str) => {
+        const {
+            saveNews,
+            getTopNews,
+            news: { tab },
+        } = this.context;
+        localStorage.setItem("language", str);
+        saveNews({ lang: str });
+        if (tab == 1 && window.location.pathname === "/") {
+            getTopNews();
+        }
+    };
     render() {
+        const { classes } = this.props;
+        const {
+            news: { tab },
+            news: { lang },
+            saveNews,
+        } = this.context;
         return (
-            <header className="navbar">
-                
-            </header>
-        )
+            <div id="navigation">
+                <div id="navbar" className={classes.navbar}>
+                    <Header
+                        color="dark"
+                        links={
+                            <div className={classes.collapse}>
+                                <List className={classes.list + " " + classes.mrAuto}>
+                                    <ListItem className={classes.listItem}>
+                                        <Button
+                                            href="#pablo"
+                                            className={
+                                                tab === 1
+                                                    ? classes.navLink + " " + classes.navLinkActive
+                                                    : classes.navLink
+                                            }
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                this.saveTab(1);
+                                            }}
+                                            color="transparent"
+                                        >
+                                            Top News
+                                        </Button>
+                                    </ListItem>
+                                    <ListItem className={classes.listItem}>
+                                        <Button
+                                            href="#pablo"
+                                            className={
+                                                tab === 2
+                                                    ? classes.navLink + " " + classes.navLinkActive
+                                                    : classes.navLink
+                                            }
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                this.saveTab(2);
+                                            }}
+                                            color="transparent"
+                                        >
+                                            Categories
+                                        </Button>
+                                    </ListItem>
+                                    <ListItem className={classes.listItem}>
+                                        <Button
+                                            href="#pablo"
+                                            className={
+                                                tab === 3
+                                                    ? classes.navLink + " " + classes.navLinkActive
+                                                    : classes.navLink
+                                            }
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                this.saveTab(3);
+                                            }}
+                                            color="transparent"
+                                        >
+                                            Search
+                                        </Button>
+                                    </ListItem>
+                                </List>
+                                <div className={classes.mlAuto}>
+                                    <List className={classes.list + " " + classes.mrAuto}>
+                                        <ListItem className={classes.listItem}>
+                                            <Button
+                                                href="#pablo"
+                                                className={
+                                                    lang === "gb"
+                                                        ? classes.navLink +
+                                                          " " +
+                                                          classes.navLinkActive
+                                                        : classes.navLink
+                                                }
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    this.saveLang("gb");
+                                                }}
+                                                color="transparent"
+                                            >
+                                                {/* <img
+                                                    src={uk2}
+                                                    className={classes.flag}
+                                                    alt="UK Flag"
+                                                /> */}
+                                                GB
+                                            </Button>
+                                        </ListItem>
+                                        <ListItem className={classes.listItem}>
+                                            <Button
+                                                href="#pablo"
+                                                className={
+                                                    lang === "us"
+                                                        ? classes.navLink +
+                                                          " " +
+                                                          classes.navLinkActive
+                                                        : classes.navLink
+                                                }
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    this.saveLang("us");
+                                                }}
+                                                color="transparent"
+                                            >
+                                                {/* <img
+                                                    src={usa2}
+                                                    className={classes.flag}
+                                                    alt="USA Flag"
+                                                /> */}
+                                                US
+                                            </Button>
+                                        </ListItem>
+                                    </List>
+                                </div>
+                            </div>
+                        }
+                    />
+                </div>
+            </div>
+        );
     }
 }
 
+Navbar.contextType = NewsContext;
+export default withStyles(navbarsStyle)(Navbar);
