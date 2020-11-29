@@ -25,6 +25,7 @@ class Article extends React.Component {
     }
     backToList = () => {
         window.history.back();
+        this.context.saveNews({ lang_enabled: true });
     };
     render() {
         const { classes } = this.props;

@@ -21,7 +21,7 @@ class Search extends Component {
         return (
             <div className={classes.wrapper}>
                 <SearchInput searchTerm={searchTerm} setSearchTerm={this.setSearchTerm} />
-                <News isSearch={true} />
+                <News isSearch={true} searchTerm={searchTerm} />
             </div>
         );
     }

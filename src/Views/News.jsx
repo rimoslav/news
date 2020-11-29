@@ -74,7 +74,7 @@ class News extends Component {
     };
 
     render() {
-        const { classes, isSearch } = this.props;
+        const { classes, isSearch, searchTerm } = this.props;
         const { isCategory } = this.state;
         let {
             news,
@@ -91,14 +91,19 @@ class News extends Component {
         return (
             <div className={classes.sectionGray}>
                 <div className={classes.container}>
-                    {!isSearch && (
+                    {((isSearch && search_results.length && searchTerm) || !isSearch) && (
                         <div className={classes.title}>
                             <h2>
-                                Top {isCategory ? category : ""} news from{" "}
-                                {lang === "gb" ? "Great Britain" : "United States"}:
+                                Top {isCategory ? category : ""} news {!isSearch ? "from" : ""}{" "}
+                                {lang === "gb" && !isSearch
+                                    ? "Great Britain"
+                                    : !isSearch
+                                    ? "United States"
+                                    : `containing the term ${searchTerm}:`}
                             </h2>
                         </div>
                     )}
+
                     <GridContainer>
                         {results &&
                             results.length > 0 &&
