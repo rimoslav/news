@@ -140,8 +140,8 @@ button.slick-arrow.slick-next {
   position: absolute;
   top: 50%;
   display: block;
-  // width: 20px;
-  height: 100%;
+  width: 20px;
+  height: 40px;
   padding: 0;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -150,18 +150,27 @@ button.slick-arrow.slick-next {
   color: transparent;
   outline: none;
   background: transparent;
-  width: 15%;
+  // width: 15%;
   z-index: 2;
   opacity: 0.5;
+}
+button.slick-arrow.slick-prev {
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid #111;
+}
+button.slick-arrow.slick-next {
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #111;
 }
 .slick-prev {
   left: 0;
   &::before {
-    content: "\f053";
-    font-weight: 600;
-    font-family: Font Awesome\ 5 Free;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
     display: inline-block;
     font-style: normal;
     font-variant: normal;
@@ -175,11 +184,6 @@ button.slick-arrow.slick-next {
 .slick-next {
   right: 0;
   &::before {
-    content: "\f054";
-    font-weight: 600;
-    font-family: Font Awesome\ 5 Free;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
     display: inline-block;
     font-style: normal;
     font-variant: normal;
@@ -236,7 +240,7 @@ button.slick-arrow.slick-next {
     content: "\2022";
     text-align: center;
     opacity: 1;
-    background-color: #fff;
+    background-color: #777;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),

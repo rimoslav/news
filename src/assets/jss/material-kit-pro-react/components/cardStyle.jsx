@@ -14,8 +14,8 @@ import {
 const cardStyle = {
     card: {
         border: "0",
-        marginBottom: "30px",
-        marginTop: "30px",
+        marginBottom: "19px",
+        marginTop: "19px",
         borderRadius: "6px",
         color: "rgba(" + hexToRgb(blackColor) + ", 0.87)",
         background: whiteColor,
@@ -48,7 +48,7 @@ const cardStyle = {
         textAlign: "center",
     },
     cardBlog: {
-        marginTop: "60px",
+        marginTop: "24px",
     },
     cardRaised: {
         boxShadow:

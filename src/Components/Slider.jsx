@@ -12,10 +12,10 @@ import { NewsContext } from "../context/NewsContext.jsx";
 
 class Slider extends React.Component {
     render() {
-        const { classes, category } = this.props;
         const settings = {
             infinite: true,
             dots: true,
+            arrows: true,
             speed: 1000,
             slidesToShow: 3,
             slidesToScroll: 3,
@@ -26,7 +26,7 @@ class Slider extends React.Component {
                     settings: {
                         slidesToShow: 2,
                         slidesToScroll: 2,
-                        dots: false,
+                        dots: true,
                     },
                 },
                 {
