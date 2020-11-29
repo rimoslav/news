@@ -69,18 +69,8 @@ const accordionStyle = (theme) => ({
     },
     expansionPanelSummaryExpaned: {
         "& $expansionPanelSummaryExpandIcon": {
-            [theme.breakpoints.up("md")]: {
-                top: "auto !important",
-            },
-            transform: "rotate(180deg)",
-            [theme.breakpoints.down("sm")]: {
-                top: "10px !important",
-            },
-            // some jss/css to make the cards look a bit better on Internet Explorer
-            "@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)": {
-                display: "inline-block !important",
-                top: "10px !important",
-            },
+            top: "50%",
+            transform: "rotate(180deg) translateY(50%)",
         },
     },
     primaryExpansionPanelSummaryExpaned: {
@@ -108,21 +98,24 @@ const accordionStyle = (theme) => ({
         margin: "0 !important",
     },
     expansionPanelSummaryExpandIcon: {
-        [theme.breakpoints.up("md")]: {
-            top: "auto !important",
-        },
         transform: "rotate(0deg)",
         color: "inherit",
         right: "-2px",
-        [theme.breakpoints.down("sm")]: {
-            top: "10px !important",
-        },
+        position: "absolute",
+        top: "50%",
+        transform: "translateY(-50%)",
+        right: "12px",
         // some jss/css to make the cards look a bit better on Internet Explorer
         "@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)": {
             display: "inline-block !important",
         },
     },
-    expansionPanelSummaryExpandIconExpanded: {},
+    expansionPanelSummaryExpandIconExpanded: {
+        right: "12px",
+        position: "absolute",
+        top: "50%",
+        transform: "translateY(-50%)",
+    },
     title: {
         fontSize: "15px",
         fontWeight: "bolder",

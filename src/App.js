@@ -67,7 +67,7 @@ class App extends Component {
             });
     };
 
-    getTopCategories = () => {
+    getTopCategories = (num) => {
         let lang = localStorage.getItem("language");
         if (!lang || lang.length == 0) {
             lang = this.state.news.lang;
@@ -77,45 +77,43 @@ class App extends Component {
             "entertainment",
             "general",
             "health",
-            "science",
             "sports",
+            "science",
             "technology",
         ];
-        categories.forEach((category, index) => {
-            axios
-                .get(
-                    `https://newsapi.org/v2/top-headlines?country=${lang}&category=${category}&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
-                )
-                .then((res) => {
-                    const articles = res.data.articles;
-                    articles.forEach((elem) => {
-                        elem.local_path = elem.url.replaceAll("/", "");
-                    });
-                    switch (index) {
-                        case 0:
-                            this.saveNews({ business: articles });
-                            break;
-                        case 1:
-                            this.saveNews({ entertainment: articles });
-                            break;
-                        case 2:
-                            this.saveNews({ general: articles });
-                            break;
-                        case 3:
-                            this.saveNews({ health: articles });
-                            break;
-                        case 4:
-                            this.saveNews({ science: articles });
-                            break;
-                        case 5:
-                            this.saveNews({ sports: articles });
-                            break;
-                        default:
-                            this.saveNews({ technology: articles });
-                            break;
-                    }
+        axios
+            .get(
+                `https://newsapi.org/v2/top-headlines?country=${lang}&category=${categories[num]}&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
+            )
+            .then((res) => {
+                const articles = res.data.articles;
+                articles.forEach((elem) => {
+                    elem.local_path = elem.url.replaceAll("/", "");
                 });
-        });
+                switch (num) {
+                    case 0:
+                        this.saveNews({ business: articles });
+                        break;
+                    case 1:
+                        this.saveNews({ entertainment: articles });
+                        break;
+                    case 2:
+                        this.saveNews({ general: articles });
+                        break;
+                    case 3:
+                        this.saveNews({ health: articles });
+                        break;
+                    case 4:
+                        this.saveNews({ sports: articles });
+                        break;
+                    case 5:
+                        this.saveNews({ science: articles });
+                        break;
+                    default:
+                        this.saveNews({ technology: articles });
+                        break;
+                }
+            });
     };
 
     searchForTerm = (term) => {

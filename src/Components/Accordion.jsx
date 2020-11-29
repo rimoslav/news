@@ -10,6 +10,7 @@ import { AccordionDetails } from "@material-ui/core";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
 import accordionStyle from "../assets/jss/material-kit-pro-react/components/accordionStyle.jsx";
+import { NewsContext } from "../context/NewsContext.jsx";
 
 class AccordionComponent extends React.Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class AccordionComponent extends React.Component {
         this.state = {
             active: props.active,
             single: false,
+            news: [false, false, false, false, false, false, false],
         };
     }
 
@@ -38,6 +40,12 @@ class AccordionComponent extends React.Component {
                 newArray = [];
             } else {
                 newArray = [panel];
+            }
+            if (this.state.news[newArray[0]] === false) {
+                let news = [...this.state.news];
+                news[newArray[0]] = true;
+                this.setState({ news });
+                this.context.getTopCategories(newArray[0]);
             }
         } else {
             if (this.state.active.indexOf(panel) === -1) {
@@ -99,4 +107,5 @@ AccordionComponent.defaultProps = {
     activeColor: "primary",
 };
 
+AccordionComponent.contextType = NewsContext;
 export default withStyles(accordionStyle)(AccordionComponent);

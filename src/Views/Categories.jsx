@@ -29,7 +29,6 @@ class Categories extends React.Component {
                     </div>
                     <Accordion
                         activeColor="rose"
-                        active={0}
                         collapses={[
                             {
                                 title: "Business",
