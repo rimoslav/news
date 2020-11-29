@@ -1,13 +1,4 @@
-import {
-    primaryColor,
-    secondaryColor,
-    warningColor,
-    dangerColor,
-    successColor,
-    infoColor,
-    roseColor,
-    grayColor,
-} from "../../material-kit-pro-react.jsx";
+import { roseColor, grayColor } from "../../material-kit-pro-react.jsx";
 
 const accordionStyle = (theme) => ({
     root: {
@@ -32,36 +23,6 @@ const accordionStyle = (theme) => ({
         borderTopRightRadius: "3px",
         color: grayColor[1],
     },
-    primaryExpansionPanelSummary: {
-        "&:hover": {
-            color: primaryColor[0],
-        },
-    },
-    secondaryExpansionPanelSummary: {
-        "&:hover": {
-            color: secondaryColor[0],
-        },
-    },
-    warningExpansionPanelSummary: {
-        "&:hover": {
-            color: warningColor[0],
-        },
-    },
-    dangerExpansionPanelSummary: {
-        "&:hover": {
-            color: dangerColor[0],
-        },
-    },
-    successExpansionPanelSummary: {
-        "&:hover": {
-            color: successColor[0],
-        },
-    },
-    infoExpansionPanelSummary: {
-        "&:hover": {
-            color: infoColor[0],
-        },
-    },
     roseExpansionPanelSummary: {
         "&:hover": {
             color: roseColor[0],
@@ -72,24 +33,6 @@ const accordionStyle = (theme) => ({
             top: "50%",
             transform: "rotate(180deg) translateY(50%)",
         },
-    },
-    primaryExpansionPanelSummaryExpaned: {
-        color: primaryColor[0],
-    },
-    secondaryExpansionPanelSummaryExpaned: {
-        color: secondaryColor[0],
-    },
-    warningExpansionPanelSummaryExpaned: {
-        color: warningColor[0],
-    },
-    dangerExpansionPanelSummaryExpaned: {
-        color: dangerColor[0],
-    },
-    successExpansionPanelSummaryExpaned: {
-        color: successColor[0],
-    },
-    infoExpansionPanelSummaryExpaned: {
-        color: infoColor[0],
     },
     roseExpansionPanelSummaryExpaned: {
         color: roseColor[0],
@@ -110,12 +53,6 @@ const accordionStyle = (theme) => ({
             display: "inline-block !important",
         },
     },
-    expansionPanelSummaryExpandIconExpanded: {
-        right: "12px",
-        position: "absolute",
-        top: "50%",
-        transform: "translateY(-50%)",
-    },
     title: {
         fontSize: "15px",
         fontWeight: "bolder",
@@ -130,11 +67,6 @@ const accordionStyle = (theme) => ({
         color: "inherit",
         marginLeft: 20,
         transform: "translateY(-7px)",
-    },
-    expansionTitle: {
-        fontSize: 15,
-        fontFamily: "Helvetica",
-        fontWeight: "bolder",
     },
     expansionPanelDetails: {
         display: "block",

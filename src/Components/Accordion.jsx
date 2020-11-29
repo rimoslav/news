@@ -88,8 +88,8 @@ class AccordionComponent extends React.Component {
                             onChange={this.handleChange(key)}
                             key={key}
                             classes={{
-                                root: classes.Accordion,
-                                expanded: classes.AccordionExpanded,
+                                root: classes.expansionPanel,
+                                expanded: classes.expansionPanelExpanded,
                             }}
                         >
                             <AccordionSummary

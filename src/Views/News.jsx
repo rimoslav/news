@@ -89,29 +89,27 @@ class News extends Component {
             results = top_headlines;
         }
         return (
-            <div className="cd-section" id="cards">
-                <div className={classes.sectionGray}>
-                    <div className={classes.container}>
-                        {!isSearch && (
-                            <div className={classes.title}>
-                                <h2>
-                                    Top {isCategory ? category : ""} news from{" "}
-                                    {lang === "gb" ? "Great Britain" : "United States"}:
-                                </h2>
-                            </div>
-                        )}
-                        <GridContainer>
-                            {results &&
-                                results.length > 0 &&
-                                results.map((headline, index) => {
-                                    return (
-                                        <GridItem key={index} xs={12} sm={6} md={6} lg={4}>
-                                            <Story headline={headline} index={index}></Story>
-                                        </GridItem>
-                                    );
-                                })}
-                        </GridContainer>
-                    </div>
+            <div className={classes.sectionGray}>
+                <div className={classes.container}>
+                    {!isSearch && (
+                        <div className={classes.title}>
+                            <h2>
+                                Top {isCategory ? category : ""} news from{" "}
+                                {lang === "gb" ? "Great Britain" : "United States"}:
+                            </h2>
+                        </div>
+                    )}
+                    <GridContainer>
+                        {results &&
+                            results.length > 0 &&
+                            results.map((headline, index) => {
+                                return (
+                                    <GridItem key={index} xs={12} sm={6} md={6} lg={4}>
+                                        <Story headline={headline} index={index}></Story>
+                                    </GridItem>
+                                );
+                            })}
+                    </GridContainer>
                 </div>
             </div>
         );
