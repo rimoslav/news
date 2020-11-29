@@ -119,28 +119,9 @@ const styles = {
         borderRadius: "50%",
         marginRight: "5px",
     },
-    statsWhite: {
-        color: "rgba(" + hexToRgb(whiteColor) + ", 0.8)",
-        display: "inline-flex",
-        "& .fab,& .fas,& .far,& .fal,& .material-icons": {
-            position: "relative",
-            top: "3px",
-            marginRight: "3px",
-            marginLeft: "3px",
-            fontSize: "18px",
-            lineHeight: "18px",
-        },
-        "& svg": {
-            position: "relative",
-            top: "3px",
-            marginRight: "3px",
-            marginLeft: "3px",
-            width: "18px",
-            height: "18px",
-        },
-    },
     stats: {
-        color: grayColor[0],
+        color: grayColor[18],
+        textShadow: "-1px 1px #aed581",
         display: "flex",
         "& .fab,& .fas,& .far,& .fal,& .material-icons": {
             position: "relative",

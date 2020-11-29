@@ -43,6 +43,7 @@ class AccordionComponent extends React.Component {
         ];
         const { lang } = this.context.news;
         this.props.history.push(`/${lang}/category/${categories[key]}`);
+        this.context.getCategory(key);
         this.context.saveNews({ category_index: key, category: categories[key] });
     };
 
@@ -61,6 +62,7 @@ class AccordionComponent extends React.Component {
                 this.setState({ news });
                 this.context.getCategory(newArray[0]);
             }
+            this.context.saveNews({ category_expanded: newArray[0] });
         } else {
             if (this.state.active.indexOf(panel) === -1) {
                 newArray = [...this.state.active, panel];

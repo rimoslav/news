@@ -7,9 +7,6 @@ import Slider from "../Components/Slider.jsx";
 import javascriptStyles from "../assets/jss/material-kit-pro-react/views/componentsSections/javascriptStyles.jsx";
 import { NewsContext } from "../context/NewsContext";
 class Categories extends React.Component {
-    componentDidMount = () => {
-        this.context.getCategory();
-    };
     render() {
         const { classes } = this.props;
         const {

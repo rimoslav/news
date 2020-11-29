@@ -21,12 +21,19 @@ class App extends Component {
                 const user = state.user;
                 news.tab = value.tab ? value.tab : news.tab;
                 news.lang = value.lang ? value.lang : news.lang;
+                news.lang_enabled =
+                    typeof value.lang_enabled === "boolean"
+                        ? value.lang_enabled
+                        : news.lang_enabled;
                 news.top_headlines = value.top_headlines ? value.top_headlines : news.top_headlines;
                 news.current = value.current ? value.current : news.current;
                 news.category_index = value.category_index
                     ? value.category_index
                     : news.category_index;
                 news.category = value.category ? value.category : news.category;
+                news.category_expanded = value.category_expanded
+                    ? value.category_expanded
+                    : news.category_expanded;
                 news.business = value.business ? value.business : news.business;
                 news.entertainment = value.entertainment ? value.entertainment : news.entertainment;
                 news.general = value.general ? value.general : news.general;

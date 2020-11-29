@@ -1,5 +1,4 @@
 import React from "react";
-
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import List from "@material-ui/core/List";
@@ -10,6 +9,7 @@ import Button from "./Button.jsx";
 
 import navbarsStyle from "../assets/jss/material-kit-pro-react/views/componentsSections/navbarsStyle.jsx";
 import { NewsContext } from "../context/NewsContext.jsx";
+
 class Navbar extends React.Component {
     componentDidMount = () => {
         const { saveNews } = this.context;
@@ -17,10 +17,13 @@ class Navbar extends React.Component {
         let tab = localStorage.getItem("tab");
         if (this.props.location.pathname === "/") {
             tab = 1;
+            saveNews({ lang_enabled: true });
         } else if (this.props.location.pathname === "/categories") {
             tab = 2;
+            saveNews({ lang_enabled: true });
         } else if (this.props.location.pathname === "/search") {
             tab = 3;
+            saveNews({ lang_enabled: false });
         }
         saveNews({ lang, tab: parseInt(tab) });
     };
@@ -31,36 +34,41 @@ class Navbar extends React.Component {
         saveNews({ tab: num });
         if (num === 1) {
             this.props.history.push("/");
+            saveNews({ lang_enabled: true });
         } else if (num === 2) {
             this.props.history.push("/categories");
+            saveNews({ lang_enabled: true });
         } else {
             this.props.history.push("/search");
+            saveNews({ lang_enabled: false });
         }
     };
     saveLang = (str) => {
-        const {
-            saveNews,
-            getTopNews,
-            getCategory,
-            news: { tab, category_index },
-        } = this.context;
-        localStorage.setItem("language", str);
-        saveNews({ lang: str });
-        if (tab === 1 && this.props.location.pathname === "/") {
-            getTopNews();
-        } else if (this.props.location.pathname.indexOf("/category/") > -1) {
-            const path =
-                str === "us"
-                    ? this.props.location.pathname.replace("/gb/", "/us/")
-                    : this.props.location.pathname.replace("/us/", "/gb/");
-            this.props.history.push(path);
-            getCategory(category_index);
+        if (this.context.news.lang_enabled) {
+            const {
+                saveNews,
+                getTopNews,
+                getCategory,
+                news: { tab, category_index },
+            } = this.context;
+            localStorage.setItem("language", str);
+            saveNews({ lang: str });
+            if (tab === 1 && this.props.location.pathname === "/") {
+                getTopNews();
+            } else if (this.props.location.pathname.indexOf("/category/") > -1) {
+                const path =
+                    str === "us"
+                        ? this.props.location.pathname.replace("/gb/", "/us/")
+                        : this.props.location.pathname.replace("/us/", "/gb/");
+                this.props.history.push(path);
+                getCategory(category_index);
+            }
         }
     };
     render() {
         const { classes } = this.props;
         const {
-            news: { tab, lang },
+            news: { tab, lang, lang_enabled },
         } = this.context;
         return (
             <div id="navigation">
@@ -128,11 +136,19 @@ class Navbar extends React.Component {
                                             <Button
                                                 href="#pablo"
                                                 className={
-                                                    lang === "gb"
+                                                    lang === "gb" && lang_enabled
                                                         ? classes.navLink +
                                                           " " +
                                                           classes.navLinkActive
-                                                        : classes.navLink
+                                                        : lang === "gb"
+                                                        ? classes.navLink +
+                                                          " " +
+                                                          classes.navLinkActive +
+                                                          " " +
+                                                          classes.disabled
+                                                        : lang_enabled
+                                                        ? classes.navLink
+                                                        : classes.navLink + " " + classes.disabled
                                                 }
                                                 onClick={(e) => {
                                                     e.preventDefault();
@@ -152,11 +168,19 @@ class Navbar extends React.Component {
                                             <Button
                                                 href="#pablo"
                                                 className={
-                                                    lang === "us"
+                                                    lang === "us" && lang_enabled
                                                         ? classes.navLink +
                                                           " " +
                                                           classes.navLinkActive
-                                                        : classes.navLink
+                                                        : lang === "us"
+                                                        ? classes.navLink +
+                                                          " " +
+                                                          classes.navLinkActive +
+                                                          " " +
+                                                          classes.disabled
+                                                        : lang_enabled
+                                                        ? classes.navLink
+                                                        : classes.navLink + " " + classes.disabled
                                                 }
                                                 onClick={(e) => {
                                                     e.preventDefault();

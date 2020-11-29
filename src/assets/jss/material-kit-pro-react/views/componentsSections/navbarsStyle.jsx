@@ -1,8 +1,9 @@
-import { container, title } from "../../../material-kit-pro-react.jsx";
+import { container, title, mlAuto } from "../../../material-kit-pro-react.jsx";
 import headerLinksStyle from "../../components/headerLinksStyle.jsx";
 
 const navbarsStyle = (theme) => ({
     container,
+    mlAuto,
     ...headerLinksStyle(theme),
     section: {
         padding: "70px 0",
@@ -55,6 +56,9 @@ const navbarsStyle = (theme) => ({
     },
     flag: {
         width: "47px",
+    },
+    disabled: {
+        cursor: "not-allowed",
     },
 });
 

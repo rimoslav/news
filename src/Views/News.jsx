@@ -13,7 +13,6 @@ class News extends Component {
     };
     componentDidMount = () => {
         const { getTopNews, getCategory, saveNews } = this.context;
-        console.log(this.props.match.params, this.props.location);
         if (this.props.location.pathname === "/") {
             getTopNews();
         } else if (this.props.location.pathname.indexOf("/category/") > -1) {
@@ -28,7 +27,6 @@ class News extends Component {
                 "technology",
             ];
             if (category && category.length) {
-                console.log(categories.indexOf(category));
                 getCategory(categories.indexOf(category));
                 saveNews({
                     category: category,
@@ -43,7 +41,6 @@ class News extends Component {
         const { getCategory, getTopNews, saveNews } = this.context;
         if (prevProps.location.pathname !== this.props.location.pathname) {
             if (this.props.location.pathname === "/") {
-                console.log("PROMJENE");
                 getTopNews();
                 saveNews({
                     category: "",
