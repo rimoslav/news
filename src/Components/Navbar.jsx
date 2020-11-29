@@ -15,11 +15,11 @@ class Navbar extends React.Component {
         const { saveNews } = this.context;
         const lang = localStorage.getItem("language");
         let tab = localStorage.getItem("tab");
-        if (window.location.pathname === "/") {
+        if (this.props.location.pathname === "/") {
             tab = 1;
-        } else if (window.location.pathname === "/categories") {
+        } else if (this.props.location.pathname === "/categories") {
             tab = 2;
-        } else if (window.location.pathname === "/search") {
+        } else if (this.props.location.pathname === "/search") {
             tab = 3;
         }
         saveNews({ lang, tab: parseInt(tab) });
@@ -41,20 +41,26 @@ class Navbar extends React.Component {
         const {
             saveNews,
             getTopNews,
-            news: { tab },
+            getCategory,
+            news: { tab, category_index },
         } = this.context;
         localStorage.setItem("language", str);
         saveNews({ lang: str });
-        if (tab == 1 && window.location.pathname === "/") {
+        if (tab === 1 && this.props.location.pathname === "/") {
             getTopNews();
+        } else if (this.props.location.pathname.indexOf("/category/") > -1) {
+            const path =
+                str === "us"
+                    ? this.props.location.pathname.replace("/gb/", "/us/")
+                    : this.props.location.pathname.replace("/us/", "/gb/");
+            this.props.history.push(path);
+            getCategory(category_index);
         }
     };
     render() {
         const { classes } = this.props;
         const {
-            news: { tab },
-            news: { lang },
-            saveNews,
+            news: { tab, lang },
         } = this.context;
         return (
             <div id="navigation">

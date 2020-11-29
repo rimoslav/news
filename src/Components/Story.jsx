@@ -13,8 +13,7 @@ import { NewsContext } from "../context/NewsContext.jsx";
 class Story extends Component {
     goToNews = () => {
         const {
-            news: { lang },
-            news: { top_headlines },
+            news: { lang, top_headlines },
             saveNews,
         } = this.context;
         const { history, index, headline } = this.props;

@@ -1,11 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Accordion } from "@material-ui/core";
-import { AccordionSummary } from "@material-ui/core";
-import { AccordionDetails } from "@material-ui/core";
-
+import { Accordion, AccordionSummary, AccordionDetails, Button } from "@material-ui/core";
 // @material-ui/icons
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
@@ -32,6 +29,23 @@ class AccordionComponent extends React.Component {
         }
     }
 
+    openCategory = (e, key) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const categories = [
+            "business",
+            "entertainment",
+            "general",
+            "health",
+            "sports",
+            "science",
+            "technology",
+        ];
+        const { lang } = this.context.news;
+        this.props.history.push(`/${lang}/category/${categories[key]}`);
+        this.context.saveNews({ category_index: key, category: categories[key] });
+    };
+
     handleChange = (panel) => (event, expanded) => {
         let newArray;
 
@@ -45,7 +59,7 @@ class AccordionComponent extends React.Component {
                 let news = [...this.state.news];
                 news[newArray[0]] = true;
                 this.setState({ news });
-                this.context.getTopCategories(newArray[0]);
+                this.context.getCategory(newArray[0]);
             }
         } else {
             if (this.state.active.indexOf(panel) === -1) {
@@ -89,7 +103,12 @@ class AccordionComponent extends React.Component {
                                     expandIcon: classes.expansionPanelSummaryExpandIcon,
                                 }}
                             >
-                                <h4 className={classes.title}>{prop.title}</h4>
+                                <Button
+                                    className={classes.expansionButton}
+                                    onClick={(e) => this.openCategory(e, key)}
+                                >
+                                    <h4 className={classes.title}>{prop.title}</h4>
+                                </Button>
                             </AccordionSummary>
                             <AccordionDetails className={classes.expansionPanelDetails}>
                                 {prop.content}
@@ -108,4 +127,4 @@ AccordionComponent.defaultProps = {
 };
 
 AccordionComponent.contextType = NewsContext;
-export default withStyles(accordionStyle)(AccordionComponent);
+export default withStyles(accordionStyle)(withRouter(AccordionComponent));

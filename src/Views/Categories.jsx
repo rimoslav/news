@@ -8,7 +8,7 @@ import javascriptStyles from "../assets/jss/material-kit-pro-react/views/compone
 import { NewsContext } from "../context/NewsContext";
 class Categories extends React.Component {
     componentDidMount = () => {
-        this.context.getTopCategories();
+        this.context.getCategory();
     };
     render() {
         const { classes } = this.props;

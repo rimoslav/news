@@ -6,7 +6,7 @@ import Article from "./Views/Article";
 import Categories from "./Views/Categories";
 import Search from "./Views/Search";
 import Navbar from "./Components/Navbar";
-import TopNews from "./Views/TopNews";
+import News from "./Views/News";
 import { createBrowserHistory } from "history";
 import "./assets/scss/material-kit-pro-react.scss";
 import "./css/style.css";
@@ -23,6 +23,10 @@ class App extends Component {
                 news.lang = value.lang ? value.lang : news.lang;
                 news.top_headlines = value.top_headlines ? value.top_headlines : news.top_headlines;
                 news.current = value.current ? value.current : news.current;
+                news.category_index = value.category_index
+                    ? value.category_index
+                    : news.category_index;
+                news.category = value.category ? value.category : news.category;
                 news.business = value.business ? value.business : news.business;
                 news.entertainment = value.entertainment ? value.entertainment : news.entertainment;
                 news.general = value.general ? value.general : news.general;
@@ -43,7 +47,7 @@ class App extends Component {
             news,
             saveNews: this.saveNews,
             getTopNews: this.getTopNews,
-            getTopCategories: this.getTopCategories,
+            getCategory: this.getCategory,
             searchForTerm: this.searchForTerm,
             history,
         };
@@ -51,7 +55,7 @@ class App extends Component {
 
     getTopNews = () => {
         let lang = localStorage.getItem("language");
-        if (!lang || lang.length == 0) {
+        if (!lang || lang.length === 0) {
             lang = this.state.news.lang;
         }
         axios
@@ -67,9 +71,9 @@ class App extends Component {
             });
     };
 
-    getTopCategories = (num) => {
+    getCategory = (num) => {
         let lang = localStorage.getItem("language");
-        if (!lang || lang.length == 0) {
+        if (!lang || lang.length === 0) {
             lang = this.state.news.lang;
         }
         const categories = [
@@ -117,9 +121,6 @@ class App extends Component {
     };
 
     searchForTerm = (term) => {
-        const {
-            news: { lang },
-        } = this.state;
         axios
             .get(
                 `https://newsapi.org/v2/everything?q=${term}&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
@@ -140,8 +141,9 @@ class App extends Component {
                     <NewsContext.Provider value={this.state}>
                         <Route path="/" component={Navbar} />{" "}
                         <Switch>
-                            <Route exact path="/" component={TopNews} isSearch={false} />{" "}
+                            <Route exact path="/" component={News} isSearch={false} />{" "}
                             <Route exact path="/categories" component={Categories} />{" "}
+                            <Route exact path="/:lang/category/:category" component={News} />{" "}
                             <Route exact path="/search" component={Search} />{" "}
                             <Route exact component={Article} path="/article/:lang/:path" />
                         </Switch>{" "}

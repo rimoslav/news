@@ -119,11 +119,22 @@ const accordionStyle = (theme) => ({
     title: {
         fontSize: "15px",
         fontWeight: "bolder",
+        fontFamily: "monospace",
+        color: "inherit",
+        margin: "0px 20px",
+        top: "50%",
+    },
+    expansionButton: {
         marginTop: "0",
         marginBottom: "0",
         color: "inherit",
         marginLeft: 20,
         transform: "translateY(-7px)",
+    },
+    expansionTitle: {
+        fontSize: 15,
+        fontFamily: "Helvetica",
+        fontWeight: "bolder",
     },
     expansionPanelDetails: {
         display: "block",

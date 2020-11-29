@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TopNews from "./TopNews";
+import News from "./News";
 import SearchInput from "../Components/SearchInput";
 import { NewsContext } from "../context/NewsContext";
 import componentsStyle from "../assets/jss/material-kit-pro-react/views/componentsStyle.jsx";
@@ -21,7 +21,7 @@ class Search extends Component {
         return (
             <div className={classes.wrapper}>
                 <SearchInput searchTerm={searchTerm} setSearchTerm={this.setSearchTerm} />
-                <TopNews isSearch={true} />
+                <News isSearch={true} />
             </div>
         );
     }
