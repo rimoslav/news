@@ -15,7 +15,7 @@ ___
 
 #### How it works
 
-**Home page** represents latest news from all sources. You can select between Great Britain or United States as a country of source.
+**Home page** represents the latest news from all sources. You can choose between Great Britain or United States as a country of source.
 You can view any article by clicking on `Card`'s `More >` link. On those routes, you can not switch between countries since you've visited a page from a specific country.
 **Category page** displays 7 different categories, each showing top 5 stories.
-You can expand the `Accordion` and preview top 5 results from each category, click `More >` link to view a full story, or you can click on categories' name to preview top 20 results on more a readable layout. **Search page** allows you to search the news by any term, with switching between states not beeing allowed by the News API. From results list, you can preview any article same way as above.
+You can expand the `Accordion` and preview top 5 results from each category, click `More >` link to view a full story, or you can click on categories' name to preview top 20 results on a more readable layout. **Search page** allows you to search the news by any term, with switching between states not beeing allowed by the News API. From results list, you can preview any article same way as above.
