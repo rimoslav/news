@@ -7,10 +7,9 @@ import Categories from "./Views/Categories";
 import Search from "./Views/Search";
 import Navbar from "./Components/Navbar";
 import News from "./Views/News";
+import NotFound from "./Views/NotFound";
 import { createBrowserHistory } from "history";
 import "./assets/scss/material-kit-pro-react.scss";
-import "./css/style.css";
-
 export const history = createBrowserHistory();
 
 class App extends Component {
@@ -153,6 +152,7 @@ class App extends Component {
                             <Route exact path="/:lang/category/:category" component={News} />{" "}
                             <Route exact path="/search" component={Search} />{" "}
                             <Route exact component={Article} path="/article/:lang/:path" />
+                            <Route exact component={NotFound} />
                         </Switch>{" "}
                     </NewsContext.Provider>{" "}
                 </Router>{" "}

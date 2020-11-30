@@ -99,7 +99,7 @@ class News extends Component {
                                     ? "Great Britain"
                                     : !isSearch
                                     ? "United States"
-                                    : `containing the term ${searchTerm}:`}
+                                    : `containing the term "${searchTerm}":`}
                             </h2>
                         </div>
                     )}
