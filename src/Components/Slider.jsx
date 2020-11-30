@@ -39,17 +39,19 @@ class Slider extends React.Component {
                 },
             ],
         };
+        const results =
+            this.props.category && this.props.category.length > 0
+                ? this.props.category.slice(0, 5)
+                : [];
         return (
             <Carousel {...settings}>
-                {this.props.category &&
-                    this.props.category.length > 0 &&
-                    this.props.category.map((headline, index) => {
-                        return (
-                            <GridItem xs={12} sm={12} md={12} key={index}>
-                                <Story headline={headline} index={index}></Story>
-                            </GridItem>
-                        );
-                    })}
+                {results.map((headline, index) => {
+                    return (
+                        <GridItem xs={12} sm={12} md={12} key={index}>
+                            <Story headline={headline} index={index}></Story>
+                        </GridItem>
+                    );
+                })}
             </Carousel>
         );
     }
