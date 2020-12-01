@@ -96,6 +96,8 @@ const styles = {
     },
     cardDescription: {
         ...description,
+        maxHeight: 200,
+        overflow: "hidden",
     },
     cardDescriptionWhite: {
         color: "rgba(" + hexToRgb(whiteColor) + ", 0.8)",

@@ -15,7 +15,7 @@ const cardStyle = {
     card: {
         border: "0",
         marginBottom: "19px",
-        marginTop: "19px",
+        marginTop: "5px",
         borderRadius: "6px",
         color: "rgba(" + hexToRgb(blackColor) + ", 0.87)",
         background: whiteColor,
@@ -48,7 +48,7 @@ const cardStyle = {
         textAlign: "center",
     },
     cardBlog: {
-        marginTop: "24px",
+        marginTop: "19px",
     },
     cardRaised: {
         boxShadow:

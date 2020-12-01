@@ -19,6 +19,8 @@ const componentsStyle = {
     },
     sectionGray: {
         background: grayColor[14],
+        marginTop: -42,
+        paddingTop: 22,
     },
 };
 
