@@ -69,7 +69,7 @@ class Parallax extends React.Component {
 Parallax.propTypes = {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
-    filter: PropTypes.oneOf(["primary", "rose", "dark", "info", "success", "warning", "danger"]),
+    filter: PropTypes.oneOf(["primary", "rose", "dark", "ultraDark", "info", "success", "warning", "danger"]),
     children: PropTypes.node,
     style: PropTypes.string,
     image: PropTypes.string,

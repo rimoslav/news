@@ -85,6 +85,21 @@ const parallaxStyle = {
             content: "''",
         },
     },
+    ultraDarkColor: {
+        "&:before": {
+            background: "rgba(" + hexToRgb(blackColor) + ", 0.85)",
+        },
+        "&:after,&:before": {
+            position: "absolute",
+            zIndex: "1",
+            width: "100%",
+            height: "100%",
+            display: "block",
+            left: "0",
+            top: "0",
+            content: "''",
+        },
+    },
     infoColor: {
         "&:before": {
             background: "rgba(" + hexToRgb(blackColor) + ", 0.5)",

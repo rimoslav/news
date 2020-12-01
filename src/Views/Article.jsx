@@ -32,17 +32,26 @@ class Article extends React.Component {
         const { current } = this.state;
         return (
             <div>
-                <div className={classes.container + " " + classes.grayFullScreen}>
-                    <GridContainer justify="center">
-                        <GridItem
-                            md={8}
-                            className={classes.textCenter + " " + classes.reducedWidth}
-                        >
-                            <p className={classes.title}>{current.title ? current.title : ""}</p>
-                            <br />
-                        </GridItem>
-                    </GridContainer>
-                </div>
+                <Parallax
+                    image={current.urlToImage ? current.urlToImage : newspaper}
+                    filter="ultraDark"
+                    className={classes.reducedHeight}
+                >
+                    <div className={classes.container}>
+                        <GridContainer justify="center">
+                            <GridItem
+                                lg={6}
+                                md={8}
+                                className={classes.textCenter + " " + classes.reducedWidth}
+                            >
+                                <p className={classes.title}>
+                                    {current.title ? current.title : ""}
+                                </p>
+                                <br />
+                            </GridItem>
+                        </GridContainer>
+                    </div>
+                </Parallax>
                 <Parallax
                     image={current.urlToImage ? current.urlToImage : newspaper}
                     filter="dark"

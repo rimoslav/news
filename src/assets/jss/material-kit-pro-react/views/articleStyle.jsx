@@ -1,4 +1,12 @@
-import { container, title, main, whiteColor, mainRaised } from "../../material-kit-pro-react.jsx";
+import {
+    container,
+    title,
+    main,
+    whiteColor,
+    mainRaised,
+    blackColor,
+    hexToRgb,
+} from "../../material-kit-pro-react.jsx";
 
 const articleStyle = {
     container: {
@@ -6,9 +14,20 @@ const articleStyle = {
         zIndex: "2",
     },
     grayFullScreen: {
-        backgroundColor: "#777",
+        backgroundColor: "#554",
         width: "100vw",
         maxWidth: "unset",
+        height: 130,
+    },
+    boxShadow: {
+        boxShadow:
+            "0 10px 30px -12px rgba(" +
+            hexToRgb(blackColor) +
+            ", 0.42), 0 4px 25px 0px rgba(" +
+            hexToRgb(blackColor) +
+            ", 0.12), 0 8px 10px -5px rgba(" +
+            hexToRgb(blackColor) +
+            ", 0.2)",
     },
     textCenter: {
         textAlign: "center",
@@ -18,14 +37,19 @@ const articleStyle = {
         cursor: "pointer",
         fontSize: 16,
     },
-    reducedWidth: {
-        maxWidth: "calc(100vw - 60px)",
+    reducedHeight: {
+        height: 140,
+        marginBottom: -2,
     },
     title: {
         ...title,
         color: whiteColor,
         fontSize: "20px",
         fontFamily: "Helvetica",
+        marginTop: 47,
+        marginBottom: 11,
+        marginLeft: "5%",
+        marginRight: "5%",
     },
     textContent: {
         fontSize: 15,
@@ -36,6 +60,7 @@ const articleStyle = {
     main: {
         ...main,
         ...mainRaised,
+        paddingBottom: 30,
     },
 };
 
